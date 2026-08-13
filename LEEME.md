@@ -108,14 +108,24 @@ Ya está publicada en:
 
 **https://invitacion-miguel-daniela-production.up.railway.app**
 
+El código está en **https://github.com/jquinteroh2-ops/Invitaci-n-especial-**
+(repositorio privado).
+
 ### Volver a subir cambios
+Railway está conectado al repositorio, así que **basta con hacer push**.
 Cada vez que edites algo (textos, fotos, la hora, los mapas), desde esta carpeta:
 
 ```
-railway up
+git add -A
+git commit -m "lo que cambiaste"
+git push
 ```
 
-Tarda ~1 minuto y la página queda actualizada sola. No hay que hacer nada más.
+Railway detecta el push solo y en ~1 minuto la página queda actualizada.
+No hay que correr nada más.
+
+> Si alguna vez quieres publicar sin pasar por GitHub, `railway up` sigue
+> funcionando: sube la carpeta tal como está en tu computador.
 
 ### Cómo funciona
 - `package.json` y `server.js` son solo para Railway: sirven los archivos de esta
