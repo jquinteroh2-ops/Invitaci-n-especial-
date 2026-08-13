@@ -1,0 +1,12 @@
+{
+  "name": "invitacion-miguel-daniela",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Invitación de boda · Miguel Andrés & Daniela Patricia",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

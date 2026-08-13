@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#F3E9D7">
+<title>Miguel &amp; Daniela · Nuestra Boda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Allura&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<canvas id="bgCanvas"></canvas>
+
+<!-- ⚠️ MÚSICA: coloca tu canción en la carpeta "musica" con el nombre cancion.mp3 -->
+<audio id="bgMusic" loop>
+  <source src="musica/cancion.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicBtn" onclick="toggleMusic()" title="Música">♪</button>
+
+<!-- ══════════════════ ESCENA 1 · EL SOBRE ══════════════════ -->
+<div id="scene-env">
+  <p class="env-tagline">Una Invitación Especial</p>
+  <h2 class="env-headline">Miguel &amp; Daniela</h2>
+
+  <div class="env-wrap">
+    <div class="envelope" id="envelope" onclick="openEnv()">
+
+      <div class="env-base"></div>
+
+      <div class="env-card" id="envCard">
+        <div class="env-card-inner">
+          <div class="env-card-tag">Nos casamos</div>
+          <div class="env-card-name">Miguel<span class="env-card-amp">&amp;</span>Daniela</div>
+          <div class="env-card-rule"></div>
+          <div class="env-card-sub">31 · 07 · 2027</div>
+        </div>
+      </div>
+
+      <div class="env-pocket">
+        <div class="env-seam env-seam-l"></div>
+        <div class="env-seam env-seam-r"></div>
+      </div>
+      <div class="env-vshadow"></div>
+
+      <div class="env-flap" id="envFlap">
+        <div class="flap-face flap-out"></div>
+        <div class="flap-face flap-in"></div>
+      </div>
+
+      <div class="seal-halo" id="sealHalo"></div>
+      <div class="seal" id="seal">
+        <span class="seal-mono">M<span class="seal-amp">&amp;</span>D</span>
+      </div>
+
+    </div>
+    <p class="env-hint" id="envHint">✦ &nbsp; Toca para abrir &nbsp; ✦</p>
+  </div>
+</div>
+
+<!-- ══════════════════ ESCENA 2 · LA CARTA ══════════════════ -->
+<div id="scene-carta">
+  <div class="carta">
+    <span class="carta-ornament">✦ ❧ ✦</span>
+    <p class="carta-tag">Invitación de Boda</p>
+    <p class="carta-honor">Con la bendición de Dios y el cariño de nuestras familias</p>
+
+    <div class="carta-names">
+      Miguel Andrés<br>
+      <span class="carta-amp">&amp;</span><br>
+      Daniela Patricia
+    </div>
+
+    <div class="carta-div">
+      <div class="carta-div-line"></div>
+      <span class="carta-div-icon">✦</span>
+      <div class="carta-div-line"></div>
+    </div>
+
+    <p class="carta-body">
+      nos casamos, y no sería lo mismo<br>
+      celebrarlo sin ti
+    </p>
+
+    <div class="carta-detail">
+      <div class="carta-date">Sábado, 31 de Julio de 2027</div>
+      <!-- ⚠️ EDITAR: nombre de la iglesia -->
+      <div class="carta-place">Nombre de la iglesia · Ciudad</div>
+      <div class="carta-time">4:00 de la tarde</div>
+    </div>
+
+    <div class="carta-div">
+      <div class="carta-div-line"></div>
+      <span class="carta-div-icon">♥</span>
+      <div class="carta-div-line"></div>
+    </div>
+
+    <p class="carta-body carta-body-sm">
+      Ven, abrázanos y quédate a bailar.<br>
+      Eso es todo lo que necesitamos.
+    </p>
+
+    <p class="carta-footer">31 · 07 · 2027 &nbsp;·&nbsp; Cartagena, Colombia</p>
+
+    <button class="carta-btn" onclick="openInvitation()">
+      Ver la invitación &nbsp;<span class="carta-btn-icon">→</span>
+    </button>
+    <div class="carta-progress"><div class="carta-progress-bar" id="cartaBar"></div></div>
+  </div>
+</div>
+
+<!-- ══════════════════ ESCENA 3 · LA INVITACIÓN ══════════════════ -->
+<div id="scene-inv">
+
+  <!-- ═══ 1 · PORTADA ═══ -->
+  <section class="hero" id="sec-inicio">
+    <div class="hero-line" style="left:7%"></div>
+    <div class="hero-line" style="left:93%"></div>
+
+    <p class="hero-eyebrow">Nos casamos</p>
+
+    <h1 class="hero-names">
+      Miguel
+      <span class="hero-amp">&amp;</span>
+      Daniela
+    </h1>
+
+    <div class="hero-divider">
+      <div class="hero-divider-line"></div>
+      <span class="hero-divider-icon">✦</span>
+      <div class="hero-divider-line"></div>
+    </div>
+
+    <!-- ⚠️ EDITAR: fecha y hora reales -->
+    <p class="hero-date">Sábado, 31 de Julio de 2027</p>
+    <p class="hero-hour">4:00 de la tarde &nbsp;·&nbsp; Cartagena, Colombia</p>
+
+    <div class="hero-cue" onclick="irA('sec-lugar')">
+      <span>Desliza</span>
+      <svg class="cue-arrow" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 14 L24 30 L38 14"/>
+        <path d="M10 24 L24 40 L38 24" opacity=".4"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ═══ 2 · FRASE ═══ -->
+  <div class="quote-sec reveal">
+    <span class="q-mark">"</span>
+    <p class="q-text">
+      Nos elegimos un día cualquiera<br>
+      y desde entonces nos seguimos eligiendo.<br>
+      Hoy queremos decirlo en voz alta, y que estés ahí.
+    </p>
+    <span class="q-mark q-mark-inv">"</span>
+    <p class="q-author">Miguel &amp; Daniela &nbsp;·&nbsp; 2027</p>
+  </div>
+
+  <!-- ═══ 3 · NUESTROS PADRES ═══ -->
+  <div class="padres-sec reveal">
+    <div class="padres-box">
+      <span class="padres-ornament">✦ ❧ ✦</span>
+      <p class="padres-tag">Con la bendición de Dios y de</p>
+      <h2 class="padres-title">Nuestros Padres</h2>
+
+      <div class="padres-grid">
+        <div class="padres-col">
+          <div class="padres-lbl">Padres del novio</div>
+          <div class="padres-name">Antonio Valencia</div>
+          <div class="padres-name">Martha Elena</div>
+        </div>
+        <div class="padres-sep"></div>
+        <div class="padres-col">
+          <div class="padres-lbl">Padres de la novia</div>
+          <div class="padres-name">Álvaro Tano</div>
+          <div class="padres-name">Liliana Cogollo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 4 · CUENTA REGRESIVA ═══ -->
+  <div class="cd-sec">
+    <p class="cd-sup reveal">El gran día está cerca</p>
+
+    <div class="cd-ring-wrap reveal">
+      <svg class="cd-ring-svg" viewBox="0 0 200 200">
+        <circle class="ring-bg"  cx="100" cy="100" r="88"/>
+        <circle id="arcArc" class="ring-arc"
+          cx="100" cy="100" r="94"
+          stroke-dasharray="590.7"
+          stroke-dashoffset="0"/>
+      </svg>
+      <div class="cd-inner">
+        <span class="cd-days" id="cdD">--</span>
+        <div class="cd-days-lbl">Días</div>
+      </div>
+    </div>
+
+    <div class="cd-hms reveal">
+      <div class="cd-unit"><span class="cd-unit-n" id="cdH">--</span><div class="cd-unit-l">Horas</div></div>
+      <span class="cd-colon">:</span>
+      <div class="cd-unit"><span class="cd-unit-n" id="cdM">--</span><div class="cd-unit-l">Minutos</div></div>
+      <span class="cd-colon">:</span>
+      <div class="cd-unit"><span class="cd-unit-n" id="cdS">--</span><div class="cd-unit-l">Segundos</div></div>
+    </div>
+
+    <div class="cal-row reveal">
+      <p class="cal-tag">Para que no se te olvide</p>
+      <div class="cal-btns">
+        <a class="cal-btn" id="calGoogle" href="#" target="_blank" rel="noopener">
+          <svg class="cal-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+          Google Calendar
+        </a>
+        <button class="cal-btn" type="button" onclick="descargarICS()">
+          <svg class="cal-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3v11m0 0 4-4m-4 4-4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+          iPhone / Outlook
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 5 · DÓNDE ═══ -->
+  <div class="lugar-sec reveal" id="sec-lugar">
+    <p class="sec-tag">Te esperamos en</p>
+    <h2 class="sec-title">Dónde y cuándo</h2>
+    <div class="sec-rule"></div>
+
+    <div class="lugar-grid">
+      <div class="lugar-card">
+        <svg class="lugar-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 3v7M17 6h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M20 10 9 20v16h22V20L20 10z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M16 36V27a4 4 0 0 1 8 0v9" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M20 16v5M17.5 18.5h5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        <div class="lugar-lbl">Ceremonia</div>
+        <!-- ⚠️ EDITAR: nombre de la iglesia, dirección y enlace de Google Maps -->
+        <div class="lugar-name">Nombre de la iglesia</div>
+        <div class="lugar-addr">Dirección · Ciudad</div>
+        <div class="lugar-hour">4:00 PM</div>
+        <a class="map-btn" href="#" target="_blank" rel="noopener">
+          <svg class="map-pin-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C8.686 2 6 4.686 6 8c0 4.5 6 13 6 13s6-8.5 6-13c0-3.314-2.686-6-6-6z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+            <circle cx="12" cy="8" r="2" stroke="currentColor" stroke-width="1.4"/>
+          </svg>
+          Cómo llegar
+        </a>
+      </div>
+
+      <div class="lugar-card">
+        <svg class="lugar-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11 5h8l-1.6 10a2.4 2.4 0 0 1-4.8 0L11 5zM14.6 20v13M10.5 34h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M29 5h-8l1.6 10a2.4 2.4 0 0 0 4.8 0L29 5zM25.4 20v13M21.5 34h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="lugar-lbl">Recepción</div>
+        <!-- ⚠️ EDITAR: nombre del salón, dirección y enlace de Google Maps -->
+        <div class="lugar-name">Nombre del salón</div>
+        <div class="lugar-addr">Dirección · Ciudad</div>
+        <div class="lugar-hour">6:00 PM</div>
+        <a class="map-btn" href="#" target="_blank" rel="noopener">
+          <svg class="map-pin-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C8.686 2 6 4.686 6 8c0 4.5 6 13 6 13s6-8.5 6-13c0-3.314-2.686-6-6-6z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+            <circle cx="12" cy="8" r="2" stroke="currentColor" stroke-width="1.4"/>
+          </svg>
+          Cómo llegar
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 6 · ITINERARIO ═══ -->
+  <div class="iti-sec reveal">
+    <p class="sec-tag">El plan</p>
+    <h2 class="sec-title">Itinerario del día</h2>
+    <div class="sec-rule"></div>
+
+    <!-- ⚠️ EDITAR: horas y momentos reales -->
+    <div class="iti-list">
+      <div class="iti-item">
+        <div class="iti-dot"></div>
+        <div class="iti-time">4:00 PM</div>
+        <div class="iti-name">Ceremonia religiosa</div>
+        <div class="iti-desc">Llega 20 minutos antes, porfa</div>
+      </div>
+      <div class="iti-item">
+        <div class="iti-dot"></div>
+        <div class="iti-time">5:30 PM</div>
+        <div class="iti-name">Cóctel de bienvenida</div>
+        <div class="iti-desc">Fotos, brindis y saludos</div>
+      </div>
+      <div class="iti-item">
+        <div class="iti-dot"></div>
+        <div class="iti-time">7:00 PM</div>
+        <div class="iti-name">Cena y recepción</div>
+        <div class="iti-desc">A sentarse y disfrutar</div>
+      </div>
+      <div class="iti-item">
+        <div class="iti-dot"></div>
+        <div class="iti-time">9:00 PM</div>
+        <div class="iti-name">¡A bailar!</div>
+        <div class="iti-desc">Hasta que aguanten los pies</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 7 · VESTIMENTA ═══ -->
+  <div class="dress-sec reveal">
+    <div class="dress-box">
+      <span class="dress-ornament">✦</span>
+      <p class="sec-tag">Código de vestimenta</p>
+      <h2 class="dress-title">Formal</h2>
+      <p class="dress-sub">En tonos oscuros</p>
+      <div class="sec-rule"></div>
+
+      <div class="dress-swatches">
+        <span class="sw" style="--c:#1B1B1F" title="Negro"></span>
+        <span class="sw" style="--c:#1E2A3A" title="Azul noche"></span>
+        <span class="sw" style="--c:#2E2A26" title="Marrón oscuro"></span>
+        <span class="sw" style="--c:#3A2A32" title="Vino"></span>
+        <span class="sw" style="--c:#26332E" title="Verde profundo"></span>
+      </div>
+
+      <div class="dress-grid">
+        <div class="dress-col">
+          <div class="dress-lbl">Ellas</div>
+          <div class="dress-val">Vestido largo</div>
+        </div>
+        <div class="dress-col">
+          <div class="dress-lbl">Ellos</div>
+          <div class="dress-val">Traje oscuro</div>
+        </div>
+      </div>
+
+      <p class="dress-note">
+        Te pedimos un favor: reservemos el <strong>blanco</strong> para la novia.
+      </p>
+    </div>
+  </div>
+
+  <!-- ═══ 8 · SOLO ADULTOS ═══ -->
+  <div class="adultos-sec reveal">
+    <div class="adultos-box">
+      <span class="adultos-ornament">✦ &nbsp; ❧ &nbsp; ✦</span>
+      <p class="sec-tag">Una nota con cariño</p>
+      <h2 class="adultos-title">Solo adultos</h2>
+      <div class="sec-rule"></div>
+      <p class="adultos-body">
+        Queremos que esta noche sea una ocasión para celebrar,
+        compartir y disfrutar entre amigos y familia. Por ello,
+        nuestra celebración estará reservada exclusivamente
+        para adultos.
+      </p>
+      <p class="adultos-foot">Gracias por comprender y ser parte de este día tan especial.</p>
+    </div>
+  </div>
+
+  <!-- ═══ 9 · GALERÍA ═══ -->
+  <div class="gal-sec" id="sec-fotos">
+    <div class="gal-header reveal">
+      <div class="gal-title">El día que dijo que sí</div>
+      <div class="gal-sub">Cartagena de Indias &nbsp;·&nbsp; La Propuesta</div>
+    </div>
+
+    <div class="car reveal">
+      <button type="button" class="car-arrow car-prev" onclick="carNav(-1)" aria-label="Anterior">‹</button>
+      <div class="car-track" id="carTrack"><!-- las diapositivas se generan en js/main.js --></div>
+      <button type="button" class="car-arrow car-next" onclick="carNav(1)" aria-label="Siguiente">›</button>
+      <div class="car-cap" id="carCap"></div>
+      <div class="car-dots" id="carDots"></div>
+      <p class="car-hint">Desliza para ver más &nbsp;·&nbsp; toca para ampliar</p>
+    </div>
+  </div>
+
+  <!-- ═══ 10 · LLUVIA DE SOBRES ═══ -->
+  <div class="sobres-sec reveal">
+    <div class="sobres-rain-wrap" id="sobresRain"></div>
+    <h2 class="sobres-title">Lluvia de Sobres</h2>
+    <div class="sobres-box">
+      <span class="sobres-ornament">✉ &nbsp; ✦ &nbsp; ✉</span>
+      <p class="sobres-tag">Si nos quieres consentir</p>
+      <div class="sobres-divider">
+        <div class="sobres-divider-line"></div>
+        <span class="sobres-divider-icon">✦</span>
+        <div class="sobres-divider-line"></div>
+      </div>
+      <p class="sobres-body">
+        Que estés con nosotros ya es el mejor regalo.<br>
+        Pero si te nace darnos algo más,<br>
+        lo que de verdad nos ayuda a empezar<br>
+        esta nueva vida es una
+        <span class="sobres-highlight">lluvia de sobres</span>.
+      </p>
+      <div class="sobres-icons-row">✉ &nbsp; ✉ &nbsp; ✉</div>
+    </div>
+  </div>
+
+  <!-- ═══ 11 · CONFIRMACIÓN ═══ -->
+  <div class="rsvp-sec reveal" id="sec-rsvp">
+    <div class="rsvp-box">
+      <span class="rsvp-ornament">✦ ♥ ✦</span>
+      <p class="rsvp-tag">Confirmación de asistencia</p>
+      <h2 class="rsvp-title">¿Nos acompañas?</h2>
+      <div class="rsvp-divider">
+        <div class="rsvp-divider-line"></div>
+        <span class="rsvp-divider-icon">✦</span>
+        <div class="rsvp-divider-line"></div>
+      </div>
+      <p class="rsvp-body">
+        Queremos tenerte cerca ese día.<br>
+        Déjanos tu nombre aquí y nos avisas que sí.
+      </p>
+      <div class="rsvp-form">
+        <input
+          class="rsvp-input"
+          id="rsvpName"
+          type="text"
+          placeholder="Tu nombre completo"
+          maxlength="60"
+          autocomplete="name"
+          enterkeyhint="next"
+        >
+        <div class="acomp">
+          <div class="acomp-head">
+            <span class="acomp-lbl">¿Vienes con alguien más?</span>
+            <div class="stepper">
+              <button type="button" class="step-btn" onclick="acompCambiar(-1)" aria-label="Quitar acompañante">−</button>
+              <span class="step-n" id="acompN">0</span>
+              <button type="button" class="step-btn" onclick="acompCambiar(1)" aria-label="Agregar acompañante">+</button>
+            </div>
+          </div>
+          <div class="acomp-lista" id="acompLista"></div>
+        </div>
+
+        <textarea
+          class="rsvp-input rsvp-textarea"
+          id="rsvpMsg"
+          placeholder="Un mensaje para los novios (opcional)"
+          maxlength="300"
+          rows="3"
+        ></textarea>
+        <button class="rsvp-btn" id="rsvpBtn" type="button" onclick="confirmarAsistencia()">
+          <span id="rsvpBtnTxt">Confirmar asistencia</span>
+          &nbsp;<span class="rsvp-btn-icon">→</span>
+        </button>
+        <p class="rsvp-note" id="rsvpNote">Quedas en la lista y se abre WhatsApp</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ PIE ═══ -->
+  <footer>
+    <p class="foot-tag">31 · 07 · 2027</p>
+    <div class="foot-names">Miguel &amp; Daniela</div>
+    <p class="foot-sub">El día más feliz de nuestras vidas</p>
+    <div class="foot-deco">♥ &nbsp; ✦ &nbsp; ♥</div>
+  </footer>
+
+</div>
+
+<!-- ══════════════════ BARRA DE NAVEGACIÓN ══════════════════ -->
+<nav id="navbar">
+  <button class="nav-item" onclick="irA('sec-inicio')" data-sec="sec-inicio">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 11 12 4l8 7v8a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>
+    <span>Inicio</span>
+  </button>
+  <button class="nav-item" onclick="irA('sec-lugar')" data-sec="sec-lugar">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2C8.686 2 6 4.686 6 8c0 4.5 6 13 6 13s6-8.5 6-13c0-3.314-2.686-6-6-6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      <circle cx="12" cy="8" r="2" stroke="currentColor" stroke-width="1.5"/>
+    </svg>
+    <span>Lugar</span>
+  </button>
+  <button class="nav-item" onclick="irA('sec-fotos')" data-sec="sec-fotos">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="8.5" cy="10" r="1.5" stroke="currentColor" stroke-width="1.3"/>
+      <path d="m4 17 5-4.5 4 3.5 3-2.5 4 3.5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>
+    <span>Fotos</span>
+  </button>
+  <button class="nav-item nav-cta" onclick="irA('sec-rsvp')" data-sec="sec-rsvp">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 7.5 12 13 4 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+    </svg>
+    <span>Confirmar</span>
+  </button>
+</nav>
+
+<!-- ══════════════════ VISOR DE FOTOS ══════════════════ -->
+<div id="lb" onclick="lbBg(event)">
+  <button class="lb-btn" id="lb-x"  onclick="closeLb()">✕</button>
+  <button class="lb-btn" id="lb-p"  onclick="lbNav(-1)">‹</button>
+  <div class="lb-in">
+    <img id="lb-img" src="" alt="">
+    <div id="lb-cap"></div>
+  </div>
+  <button class="lb-btn" id="lb-nx" onclick="lbNav(1)">›</button>
+  <div class="lb-dots" id="lb-dots"></div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+# dependencias (el servidor no usa ninguna, pero por si acaso)
+node_modules/
+npm-debug.log*
+
+# Railway
+.railway/
+
+# archivos que crea Windows solo
+Thumbs.db
+desktop.ini

@@ -1,0 +1,6 @@
+Coloca aquí la canción de fondo con el nombre exacto:
+
+    cancion.mp3
+
+Si el archivo no existe, la invitación funciona igual (simplemente
+no suena música y el botón ♪ no aparece).
