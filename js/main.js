@@ -280,14 +280,9 @@ function initCarrusel(){
 function carPintar(i){
   carI=i;
   const track=document.getElementById('carTrack');
-  const cap=document.getElementById('carCap');
   if(!track)return;
   [...track.children].forEach((s,n)=>s.classList.toggle('is-active',n===i));
   document.querySelectorAll('.car-dot').forEach((d,n)=>d.classList.toggle('on',n===i));
-  if(cap&&cap.textContent!==PHOTOS[i].cap){
-    cap.style.opacity='0';
-    setTimeout(()=>{cap.textContent=PHOTOS[i].cap;cap.style.opacity='1'},130);
-  }
 }
 
 function carIr(i){
@@ -306,7 +301,6 @@ initCarrusel();
 /* ── VISOR DE FOTOS ── */
 const lbEl=document.getElementById('lb');
 const lbImg=document.getElementById('lb-img');
-const lbCap=document.getElementById('lb-cap');
 const ldots=document.getElementById('lb-dots');
 let lbI=0;
 
@@ -318,7 +312,7 @@ PHOTOS.forEach((_,i)=>{
 });
 
 function openLb(idx){
-  lbI=idx;lbImg.src=PHOTOS[idx].src;lbCap.textContent=PHOTOS[idx].cap;
+  lbI=idx;lbImg.src=PHOTOS[idx].src;lbImg.alt=PHOTOS[idx].cap;
   lbEl.style.display='flex';
   requestAnimationFrame(()=>requestAnimationFrame(()=>lbEl.classList.add('vis')));
   lbEl.classList.add('open');syncDots();document.body.style.overflow='hidden';
@@ -333,7 +327,7 @@ function lbNav(d){lbGo((lbI+d+PHOTOS.length)%PHOTOS.length)}
 function lbGo(idx){
   lbImg.style.opacity='0';lbImg.style.transform='scale(.95)';
   setTimeout(()=>{
-    lbI=idx;lbImg.src=PHOTOS[idx].src;lbCap.textContent=PHOTOS[idx].cap;
+    lbI=idx;lbImg.src=PHOTOS[idx].src;lbImg.alt=PHOTOS[idx].cap;
     lbImg.style.opacity='1';lbImg.style.transform='none';syncDots();
   },220);
 }

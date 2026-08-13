@@ -820,14 +820,7 @@ body{
   text-shadow:0 1px 6px rgba(60,46,28,.8);
 }
 
-.car-cap{
-  text-align:center;margin-top:1.4rem;min-height:1.6em;
-  font-style:italic;font-size:clamp(.95rem,2.4vw,1.1rem);
-  color:var(--ink-2);padding:0 1.5rem;
-  transition:opacity .25s ease;
-}
-
-.car-dots{display:flex;gap:.42rem;justify-content:center;margin-top:1rem;flex-wrap:wrap;padding:0 1rem}
+.car-dots{display:flex;gap:.42rem;justify-content:center;margin-top:1.6rem;flex-wrap:wrap;padding:0 1rem}
 .car-dot{
   width:7px;height:7px;border-radius:50%;border:none;padding:0;
   background:rgba(154,123,60,.3);cursor:pointer;
@@ -842,7 +835,7 @@ body{
 }
 
 .car-arrow{
-  position:absolute;top:calc(50% - 3.5rem);transform:translateY(-50%);
+  position:absolute;top:calc(50% - 2.25rem);transform:translateY(-50%);
   z-index:4;width:42px;height:42px;border-radius:50%;
   background:rgba(255,253,247,.9);
   border:1px solid rgba(154,123,60,.3);
@@ -1046,8 +1039,7 @@ body{
 }
 #lb.open{display:flex}#lb.vis{opacity:1}
 .lb-in{display:flex;flex-direction:column;align-items:center;gap:1rem;max-width:95vw;max-height:95vh}
-#lb-img{max-width:88vw;max-height:80vh;object-fit:contain;border-radius:3px;box-shadow:0 30px 70px rgba(0,0,0,.55);transition:opacity .25s,transform .25s}
-#lb-cap{font-style:italic;color:var(--gold-lt);font-size:.92rem;letter-spacing:.08em;text-align:center;padding:0 1rem}
+#lb-img{max-width:88vw;max-height:86vh;object-fit:contain;border-radius:3px;box-shadow:0 30px 70px rgba(0,0,0,.55);transition:opacity .25s,transform .25s}
 .lb-btn{
   position:fixed;background:rgba(251,247,239,.14);
   border:1px solid rgba(229,211,163,.4);
